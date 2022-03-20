@@ -6,7 +6,7 @@ pipeline {
         stage('build jar') {
             steps {
                 echo "building app..."
-                sh 'mvn clean package'
+                sh 'mvn package'
             }
         }
         stage('build image') {
