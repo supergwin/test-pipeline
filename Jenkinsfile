@@ -6,7 +6,7 @@ pipeline {
         stage('build jar') {
             steps {
                 echo "building app..."
-                sh 'mvn clean package'
+                sh 'mvn package'
             }
         }
         stage('build image') {
@@ -25,8 +25,4 @@ pipeline {
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9bd75bf0ef26f2e9cc8969dcdebd51a1f5b02b7c
