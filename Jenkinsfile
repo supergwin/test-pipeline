@@ -14,7 +14,7 @@ pipeline {
                 echo 'building docker image..'
                 withCredentials([username:Password(credentialsId: 'dockerhub-creds', variable: 'dockerhub')]) {
                     sh 'docker build -t gwin8/jenkins-pipeline:jenks-img-1.0 .'
-                    sh "docker login -u gwin8 -p $dockerhub"
+                    sh "docker login -u $dockerhub -p $dockerhub"
                     sh 'docker push gwin8/jenkins-pipeline:jenks-img-1.0'
                 }
             }
