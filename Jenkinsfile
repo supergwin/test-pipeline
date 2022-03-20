@@ -10,10 +10,10 @@ pipeline {
         }
         stage('build image') {
             steps {
-                echo 'building docker image..' 
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER' passwordVariable: 'PASS')]
+                echo 'building docker image..'
+                withCredentials([usernameColonPassword(credentialsId: 'dockerhub-creds', variable: 'dockerhub')]) {
                     sh 'docker build -t gwin8/jenkins-pipeline:jenks-img-1.0 .'
-                    sh "echo $PASS | docker login -u $USER --pasword-stdin"
+                    sh "docker login -u $dockerhub -p $dockerhub"
                     sh 'docker push gwin8/jenkins-pipeline:jenks-img-1.0'
             }
         } 
@@ -24,4 +24,3 @@ pipeline {
         }
     }
 }
-
